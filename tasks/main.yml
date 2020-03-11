@@ -1,0 +1,19 @@
+---
+- name: install epel-release
+  become: yes
+  yum:
+    name:
+      - epel-release
+    state: present
+
+- name: install borgbackup
+  become: yes
+  yum:
+    name: borgbackup
+    State: present
+
+- name: create backup directory
+  file:
+    state: directory
+    path: "{{borg_backupdir}}"
+
